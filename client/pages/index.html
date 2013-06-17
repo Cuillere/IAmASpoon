@@ -51,7 +51,7 @@
 			var images = [];
 			images.push(assets.get('image1'));
 			//images.push(assets.get('image2'));
-			sprite = new Sprite(images,80,80);
+			sprite = new Sprite(images,32,32);
 			sprite.scaleType('repeat');
 			//var socket = io.connect('http://109.217.85.232:1337');
 			var socket = io.connect('http://192.168.1.12:1337');
@@ -65,7 +65,7 @@
 			});
 
   			socket.on('update', function(data) {
-	  			ctx.fillStyle = "rgb(200,200,200)";
+	  			ctx.fillStyle = "rgb(50,50,200)";
 	  			ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	  			//Find me
