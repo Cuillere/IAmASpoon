@@ -53,6 +53,11 @@ io.sockets.on('connection', function (socket) {
       var key = data.key; //up, down, left or right
       game.manageInput(type, key, player);
     });
+
+    //Manage chat
+    socket.on('chat_message', function(data) {
+      io.sockets.emit('chat_message', '>' + id + ' : ' + data);
+    });
 });
 
 game.start(gameLoopCallback);

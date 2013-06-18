@@ -6,12 +6,12 @@
 	<script type="text/javascript" src="/keyboard.js"></script>
 </head>
 <body style="text-align:center;">
-	<canvas id="draw-space" style="background:black;"></canvas>
-	<div id='player_infos'>
-		<div id='coordinates'></div>
-		<div id='speed'></div>
-		<div id='acceleration'></div>
-		<div id='friction'></div>
+	<canvas id='draw-space' style="background:black;"></canvas>
+	<div style='background:#eee;width:300px;height:300px;float:right;text-align:left;padding-left:5px;'>
+		<div id='chat-box' style='width:300px;height:270px;overflow:scroll;'>
+		</div>
+		<input type='text' id='chat-message' style='width:220px;height:25px'/>
+		<input type='button' value='send' id='chat-send'/>
 	</div>
 </body>
 <script>
@@ -22,21 +22,26 @@
 		var size = getWindowSize();
 		var assets = new Assets();
 		var canvas = document.getElementById("draw-space");
+		var chat_box = document.getElementById("chat-box");
+		var chat_msg = document.getElementById("chat-message");
+		var chat_send = document.getElementById("chat-send");
 	 	var ctx = canvas.getContext("2d");
 	 	var sprite;
 	 	var me;
-	 	var div_coordinates = document.getElementById("coordinates");
-	 	var div_speed = document.getElementById("speed");
-	 	var div_acceleration = document.getElementById("acceleration");
-	 	var div_friction = document.getElementById("friction");
-	 	var div_player_infos = document.getElementById("player_infos");
+	 	var socket;
+
+	 	//setting up chat button
+	 	chat_send.addEventListener('click', function() {
+	 		if(socket) {
+	 			var msg = chat_msg.value;
+	 			socket.emit('chat_message', msg);
+	 			chat_msg.value = '';
+	 		}
+	 	});
 
 	 	//server data
 	 	var platforms;
 	 	var id;
-
-	 	div_player_infos.style.visibility = 'hidden';
-	 	//div_player_infos.style.visibility = 'visible';
 
 	 	//setting up canvas
 	 	canvas.width = size.w*2/3;
@@ -54,8 +59,15 @@
 			sprite = new Sprite(images,32,32);
 			sprite.scaleType('deform');
 			//var socket = io.connect('http://109.217.85.232:1337');
-			//var socket = io.connect('http://192.168.1.12:1337');
-			var socket = io.connect('http://192.168.1.118:1337');
+			socket = io.connect('http://192.168.1.12:1337');
+			
+			socket.on('chat_message', function(data) {
+				var divTag = document.createElement("div"); 
+	            divTag.innerHTML = data;
+	            chat_box.appendChild(divTag);
+	            chat_box.scrollTop = chat_box.scrollHeight; 
+			});
+
 			socket.on('init_platforms', function(data) {
 				platforms = data;
 			});
@@ -82,10 +94,6 @@
 	  			data.players.forEach(function(element, index, array) {
 	  				sprite.move(element.body.x+offsetX, element.body.y+offsetY);
 	  				sprite.draw(ctx, data.elapsedTime);
-	  				div_coordinates.innerHTML = element.body.x + ';' + element.body.y;
-		  			div_speed.innerHTML = element.body.xSpeed + ';' + element.body.ySpeed;
-		  			div_acceleration.innerHTML = element.body.xAcceleration + ';' + element.body.yAcceleration;
-		  			div_friction.innerHTML = element.body.xFriction + ';' + element.body.yFriction;
 	  			});
 
 	  			platforms.forEach(function(element, index, array) {
