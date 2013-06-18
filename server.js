@@ -28,14 +28,12 @@ game.addPlatform('left_floor', 0, 0, 32, 600);
 
 game.addPlatform('middle_floor', 0, 135, 64, 32);
 
-
-
-
 io.sockets.on('connection', function (socket) {
     var address = socket.handshake.address;
     var id = address.address + ':' + address.port + '/' + curPlayerIndex++;
     logger.log('New connection ' + id, logger.green);
     var player = game.addPlayer(id);
+
     //Give the platforms
     socket.emit('init_platforms', game.platforms);
     //Give the player his id

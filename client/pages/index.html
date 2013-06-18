@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="/keyboard.js"></script>
 </head>
 <body style="text-align:center;">
-	<canvas id='draw-space' style="background:black;"></canvas>
+	<canvas id='draw-space' style="background:black;cursor:url('/cursor.jpg') 13 20,default;"></canvas>
 	<div style='background:#eee;width:300px;height:300px;float:right;text-align:left;padding-left:5px;'>
 		<div id='chat-box' style='width:300px;height:270px;overflow:scroll;'>
 		</div>
@@ -29,6 +29,7 @@
 	 	var sprite;
 	 	var me;
 	 	var socket;
+        var cursorX = 0, cursorY = 0;
 
 	 	//setting up chat button
 	 	chat_send.addEventListener('click', function() {
@@ -43,9 +44,7 @@
 	 	var platforms;
 	 	var id;
 
-	 	//setting up canvas
-	 	canvas.width = size.w*2/3;
-	 	canvas.height = size.h*4/5;
+
 
 	 	//loading assets
 		assets.add("image1","http://cdn.deguisetoi.fr/images/rep_articles/mini/ba/banane-a-etirer_213079_1.jpg");
@@ -53,11 +52,15 @@
 		assets.load(function(progress, max){
 			ctx.fillRect(10,canvas.height/2,(canvas.width-20)*progress/max,3);
 		}, function(){
+
 			var images = [];
-			//images.push(assets.get('image1'));
+            var cursorImages = [];
+			images.push(assets.get('image1'));
 			images.push(assets.get('image2'));
+            cursorImages.push(assets.get('image2'));
 			sprite = new Sprite(images,32,32);
 			sprite.scaleType('deform');
+
 			//var socket = io.connect('http://109.217.85.232:1337');
 			socket = io.connect('http://192.168.1.12:1337');
 			
@@ -91,6 +94,7 @@
 				var offsetX = canvas.width/2 - 16 -me.body.x;
 				var offsetY = canvas.height/2 - 16 -me.body.y;
 
+
 	  			data.players.forEach(function(element, index, array) {
 	  				sprite.move(element.body.x+offsetX, element.body.y+offsetY);
 	  				sprite.draw(ctx, data.elapsedTime);
@@ -123,6 +127,16 @@
 
 		});
 
+        //setting up canvas
+        canvas.width = size.w*2/3;
+        canvas.height = size.h*4/5;
+
+        canvas.addEventListener('mousedown', function(event) {
+            event.preventDefault();
+            cursorX = event.clientX - this.offsetLeft;
+            cursorY = event.clientY - this.offsetTop;
+        });
+
 		function manageKeyboardInput(type, intKeyCode, socket) {
 			var keyStr = '';
 			switch(intKeyCode) {
@@ -146,16 +160,16 @@
 			var myWidth = 0, myHeight = 0;
 			if( typeof( window.innerWidth ) == 'number' ) {
 			//Non-IE
-			myWidth = window.innerWidth;
-			myHeight = window.innerHeight;
+                myWidth = window.innerWidth;
+                myHeight = window.innerHeight;
 			} else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
 			//IE 6+ in 'standards compliant mode'
-			myWidth = document.documentElement.clientWidth;
-			myHeight = document.documentElement.clientHeight;
+                myWidth = document.documentElement.clientWidth;
+                myHeight = document.documentElement.clientHeight;
 			} else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
 			//IE 4 compatible
-			myWidth = document.body.clientWidth;
-			myHeight = document.body.clientHeight;
+                myWidth = document.body.clientWidth;
+                myHeight = document.body.clientHeight;
 			}
 			return {w:myWidth, h:myHeight};
 		}
