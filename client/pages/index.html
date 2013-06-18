@@ -44,18 +44,18 @@
 
 	 	//loading assets
 		assets.add("image1","http://cdn.deguisetoi.fr/images/rep_articles/mini/ba/banane-a-etirer_213079_1.jpg");
-		//assets.add("image2","http://25.media.tumblr.com/8169421bf61bd8e67ea844aa656048c1/tumblr_mmfqtp5Ely1snhhiao1_1280.jpg");
+		assets.add("image2","http://25.media.tumblr.com/8169421bf61bd8e67ea844aa656048c1/tumblr_mmfqtp5Ely1snhhiao1_1280.jpg");
 		assets.load(function(progress, max){
 			ctx.fillRect(10,canvas.height/2,(canvas.width-20)*progress/max,3);
 		}, function(){
 			var images = [];
-			images.push(assets.get('image1'));
-			//images.push(assets.get('image2'));
+			//images.push(assets.get('image1'));
+			images.push(assets.get('image2'));
 			sprite = new Sprite(images,32,32);
-			sprite.scaleType('repeat');
+			sprite.scaleType('deform');
 			//var socket = io.connect('http://109.217.85.232:1337');
-			var socket = io.connect('http://192.168.1.12:1337');
-
+			//var socket = io.connect('http://192.168.1.12:1337');
+			var socket = io.connect('http://192.168.1.118:1337');
 			socket.on('init_platforms', function(data) {
 				platforms = data;
 			});
@@ -65,7 +65,7 @@
 			});
 
   			socket.on('update', function(data) {
-	  			ctx.fillStyle = "rgb(50,50,200)";
+	  			ctx.fillStyle = "rgb(50,90,155)";
 	  			ctx.fillRect(0,0,canvas.width,canvas.height);
 
 	  			//Find me

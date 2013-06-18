@@ -6,7 +6,7 @@ function Sprite(images, width, height) {
 	this.elapsedTime = 0;
 	this.currentImageIndex = 0;
 	this.millisPerImage = 36;
-	this.type = 'deform';
+	this.type = 'crop';
 }
 
 Sprite.prototype = {
