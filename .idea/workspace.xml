@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="944b02e0-7fa0-4c99-bdf1-1c4018da451b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/game.js" afterPath="$PROJECT_DIR$/node_modules/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/client.js" afterPath="$PROJECT_DIR$/public/js/client.js" />
     </list>
     <ignored path="Iaas.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -11,7 +10,7 @@
     <file path="/server.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371673865183" ignored="false" />
     <file path="/index.html" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371672548217" ignored="false" />
     <file path="/style.css" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371672211700" ignored="false" />
-    <file path="/client.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371673224108" ignored="false" />
+    <file path="/client.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371674980593" ignored="false" />
     <file path="/game.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371674151395" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,10 +31,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="16" selection-start="219" selection-end="219" vertical-scroll-proportion="0.11682243">
+            <state line="6" column="16" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -59,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="9" selection-start="3536" selection-end="3536" vertical-scroll-proportion="0.0">
+            <state line="47" column="109" selection-start="1421" selection-end="1421" vertical-scroll-proportion="0.20304568">
               <folding />
             </state>
           </provider>
@@ -100,9 +99,9 @@
         <option value="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/tmp/app.js" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/views/index.html" />
-        <option value="$PROJECT_DIR$/public/js/client.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/node_modules/game.js" />
+        <option value="$PROJECT_DIR$/public/js/client.js" />
       </list>
     </option>
   </component>
@@ -484,16 +483,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/index.html">
+    <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="60" selection-start="625" selection-end="625" vertical-scroll-proportion="-11.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="9" selection-start="3536" selection-end="3536" vertical-scroll-proportion="0.0">
+        <state line="6" column="16" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -505,9 +497,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/public/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="16" selection-start="219" selection-end="219" vertical-scroll-proportion="0.11682243">
+        <state line="18" column="60" selection-start="625" selection-end="625" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="109" selection-start="1421" selection-end="1421" vertical-scroll-proportion="0.20304568">
           <folding />
         </state>
       </provider>

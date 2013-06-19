@@ -15,6 +15,7 @@
     //--->Graphics--->Sprites
     var cursorSprite;
     var playerSprite;
+    var assetsLoaded = false;
     //--->Socket IO
     var socket;
     //--->Game data
@@ -36,16 +37,34 @@
     canvas.height = size.h*4/5;
 
     canvas.addEventListener('mousemove', function(event) {
-        event.preventDefault();
-        cursorX = event.clientX - this.offsetLeft - cursorSprite.rect.width/2;
-        cursorY = event.clientY - this.offsetTop - cursorSprite.rect.height/2;
+        if(assetsLoaded) {
+            event.preventDefault();
+            cursorX = event.clientX - this.offsetLeft - cursorSprite.rect.width/2;
+            cursorY = event.clientY - this.offsetTop - cursorSprite.rect.height/2;
+        }
     });
 
     //Loading assets
     assets.add("player","http://cdn.deguisetoi.fr/images/rep_articles/mini/ba/banane-a-etirer_213079_1.jpg");
     assets.add("cursor","/images/cursor.jpg");
     assets.load(function(progress, max){
-        ctx.fillRect(10,canvas.height/2,(canvas.width-20)*progress/max,3);
+        //background
+        ctx.fillStyle = "#333";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+
+        var px = 10;
+        var py = canvas.height/2-5;
+        var w = canvas.width-20;
+        var h = 20;
+
+        //progress
+        ctx.fillStyle = 'rgb(60,180,60)';
+        ctx.fillRect(px,py,(w)*progress/max,h);
+
+        //loading border
+        ctx.strokeStyle = '#aaa';
+        ctx.lineWidth = 5;
+        ctx.strokeRect(px,py,w,h);
     }, function(){
         //Setting up sprites
         var playerImages = [];
@@ -57,11 +76,12 @@
         cursorImages.push(assets.get('cursor'));
         cursorSprite = new Sprite(cursorImages, 10, 10);
         cursorSprite.scaleType('deform');
+
+        assetsLoaded = true;
     });
 
 
-
-    //Setting up Socket IO
+    //Setting up socket IO
     //var socket = io.connect('http://109.217.85.232:1337');
     socket = io.connect('http://192.168.1.12:1337');
 
@@ -81,35 +101,34 @@
     });
 
     socket.on('update', function(data) {
-        ctx.fillStyle = "rgb(50,90,155)";
-        ctx.fillRect(0,0,canvas.width,canvas.height);
+        if(assetsLoaded) {
+            ctx.fillStyle = "rgb(50,90,155)";
+            ctx.fillRect(0,0,canvas.width,canvas.height);
 
-        //Find me
-        data.players.forEach(function(element, index, array) {
-            if(element.id == id) {
-                //This is me !
-                me = element;
-            }
-        });
+            //Find me
+            data.players.forEach(function(element, index, array) {
+                if(element.id == id) {
+                    //This is me !
+                    me = element;
+                }
+            });
 
-        var offsetX = canvas.width/2 - 16 -me.body.x;
-        var offsetY = canvas.height/2 - 16 -me.body.y;
+            var offsetX = canvas.width/2 - 16 -me.body.x;
+            var offsetY = canvas.height/2 - 16 -me.body.y;
 
-        if(playerSprite) {
             data.players.forEach(function(element, index, array) {
                 playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                 playerSprite.draw(ctx, data.elapsedTime);
             });
-        }
 
-        platforms.forEach(function(element, index, array) {
-            ctx.fillStyle = "rgb(60,200,60)";
-            ctx.fillRect(element.body.x+offsetX, element.body.y+offsetY, element.body.width, element.body.height);
-        });
+            platforms.forEach(function(element, index, array) {
+                ctx.fillStyle = "rgb(60,200,60)";
+                ctx.fillRect(element.body.x+offsetX, element.body.y+offsetY, element.body.width, element.body.height);
+            });
 
-        if(cursorSprite) {
             cursorSprite.move(cursorX, cursorY);
             cursorSprite.draw(ctx, data.elapsedTime);
+
         }
     });
 
