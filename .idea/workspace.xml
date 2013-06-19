@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="944b02e0-7fa0-4c99-bdf1-1c4018da451b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/js/cursor.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/js/graphics.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/js/keyboard.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/views/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/tmp/app.js" afterPath="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/tmp/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/index.html" afterPath="$PROJECT_DIR$/public/views/index.html" />
     </list>
     <ignored path="Iaas.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371660743372" ignored="false" />
     <file path="/server.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371671923221" ignored="false" />
-    <file path="/index.html" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371672153641" ignored="false" />
+    <file path="/index.html" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371672548217" ignored="false" />
     <file path="/style.css" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371672211700" ignored="false" />
+    <file path="/client.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371673224108" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,10 +39,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="44" selection-start="489" selection-end="489" vertical-scroll-proportion="-0.14563107">
+            <state line="18" column="60" selection-start="625" selection-end="625" vertical-scroll-proportion="-11.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="9" selection-start="3536" selection-end="3536" vertical-scroll-proportion="1.9579439">
               <folding />
             </state>
           </provider>
@@ -84,8 +88,9 @@
         <option value="$PROJECT_DIR$/client/pages/index.html" />
         <option value="$PROJECT_DIR$/node_modules/socket.io/node_modules/socket.io-client/node_modules/uglify-js/tmp/app.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/public/views/index.html" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/public/views/index.html" />
+        <option value="$PROJECT_DIR$/public/js/client.js" />
       </list>
     </option>
   </component>
@@ -460,9 +465,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/cursor.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="44" selection-start="489" selection-end="489" vertical-scroll-proportion="-0.14563107">
+        <state line="18" column="60" selection-start="625" selection-end="625" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="9" selection-start="3536" selection-end="3536" vertical-scroll-proportion="1.9579439">
           <folding />
         </state>
       </provider>
