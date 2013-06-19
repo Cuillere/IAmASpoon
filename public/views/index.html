@@ -2,15 +2,16 @@
 <head>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="/graphics.js"></script>
-	<script type="text/javascript" src="/keyboard.js"></script>
+	<script type="text/javascript" src="/js/graphics.js"></script>
+	<script type="text/javascript" src="/js/keyboard.js"></script>
+    <link type="text/css" href="/css/style.css" rel="stylesheet"/>
 </head>
-<body style="text-align:center;">
-	<canvas id='draw-space' style="background:black;cursor:none;"></canvas>
-	<div style='background:#eee;width:300px;height:300px;float:right;text-align:left;padding-left:5px;'>
-		<div id='chat-box' style='width:300px;height:270px;overflow:scroll;'>
+<body>
+	<canvas id='draw-space'></canvas>
+	<div id='chat-container'>
+		<div id='chat-box'>
 		</div>
-		<input type='text' id='chat-message' style='width:220px;height:25px'/>
+		<input type='text' id='chat-message'/>
 		<input type='button' value='send' id='chat-send'/>
 	</div>
 </body>

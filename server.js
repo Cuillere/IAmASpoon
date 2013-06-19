@@ -8,13 +8,20 @@ var express = require('express')
 
 io.set('log level', 1);
 
-server.listen(1337);
+
 
 app.get('/', function (req, res) {
-  res.sendfile('./client/pages/index.html');
+  res.sendfile('./public/views/index.html');
 });
 
-app.use(express.static(__dirname + '/client/js'));
+app.configure(function(){
+    app.use('/js', express.static(__dirname + '/public/js'));
+    app.use('/images', express.static(__dirname + '/public/images'));
+    app.use('/views', express.static(__dirname + '/public/views'));
+    app.use('/css', express.static(__dirname + '/public/css'));
+});
+
+server.listen(1337);
 
 //setting up game
 var gameLoopCallback = function(players) {
