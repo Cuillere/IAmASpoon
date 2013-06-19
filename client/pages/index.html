@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="/keyboard.js"></script>
 </head>
 <body style="text-align:center;">
-	<canvas id='draw-space' style="background:black;cursor:url('/cursor.jpg') 13 20,default;"></canvas>
+	<canvas id='draw-space' style="background:black;cursor:none;"></canvas>
 	<div style='background:#eee;width:300px;height:300px;float:right;text-align:left;padding-left:5px;'>
 		<div id='chat-box' style='width:300px;height:270px;overflow:scroll;'>
 		</div>
@@ -26,6 +26,7 @@
 		var chat_msg = document.getElementById("chat-message");
 		var chat_send = document.getElementById("chat-send");
 	 	var ctx = canvas.getContext("2d");
+        var cursorSprite;
 	 	var sprite;
 	 	var me;
 	 	var socket;
@@ -54,12 +55,12 @@
 		}, function(){
 
 			var images = [];
-            var cursorImages = [];
 			images.push(assets.get('image1'));
 			images.push(assets.get('image2'));
-            cursorImages.push(assets.get('image2'));
 			sprite = new Sprite(images,32,32);
 			sprite.scaleType('deform');
+            cursorSprite = new Sprite(images, 10, 10);
+            sprite.scaleType('deform');
 
 			//var socket = io.connect('http://109.217.85.232:1337');
 			socket = io.connect('http://192.168.1.12:1337');
@@ -94,6 +95,8 @@
 				var offsetX = canvas.width/2 - 16 -me.body.x;
 				var offsetY = canvas.height/2 - 16 -me.body.y;
 
+                cursorSprite.move(cursorX, cursorY);
+                cursorSprite.draw(ctx, data.elapsedTime);
 
 	  			data.players.forEach(function(element, index, array) {
 	  				sprite.move(element.body.x+offsetX, element.body.y+offsetY);
@@ -131,24 +134,28 @@
         canvas.width = size.w*2/3;
         canvas.height = size.h*4/5;
 
-        canvas.addEventListener('mousedown', function(event) {
+        canvas.addEventListener('mousemove', function(event) {
             event.preventDefault();
-            cursorX = event.clientX - this.offsetLeft;
-            cursorY = event.clientY - this.offsetTop;
+            cursorX = event.clientX - this.offsetLeft - cursorSprite.rect.width/2;
+            cursorY = event.clientY - this.offsetTop - cursorSprite.rect.height/2;
         });
 
 		function manageKeyboardInput(type, intKeyCode, socket) {
 			var keyStr = '';
 			switch(intKeyCode) {
+                case KEY_S:
 				case KEY_DOWN:
 					keyStr = 'down';
 				break;
+                case KEY_Z:
 				case KEY_UP:
 					keyStr = 'up';
 				break;
+                case KEY_Q:
 				case KEY_LEFT:
 					keyStr = 'left';
 				break;
+                case KEY_D:
 				case KEY_RIGHT:
 					keyStr = 'right';
 				break;
