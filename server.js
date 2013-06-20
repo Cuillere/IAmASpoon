@@ -25,8 +25,8 @@ server.listen(1337);
 logger.log('Server listening on port 1337', logger.cyan);
 
 //Setting up game
-var gameLoopCallback = function(players, elapsedTime) {
-  io.sockets.emit('update', {players:players, elapsedTime:elapsedTime});
+var gameLoopCallback = function(players, projectiles, elapsedTime) {
+  io.sockets.emit('update', {players:players, projectiles:projectiles, elapsedTime:elapsedTime});
 };
 
 game.addPlatform('top_floor', 0, 0, 1000, 32);

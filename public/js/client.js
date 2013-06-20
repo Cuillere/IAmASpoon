@@ -15,6 +15,7 @@
     //--->Graphics--->Sprites
     var cursorSprite;
     var playerSprite;
+    var bulletSprite;
     var assetsLoaded = false;
     //--->Socket IO
     var socket;
@@ -87,14 +88,19 @@
         cursorSprite = new Sprite(cursorImages, 10, 10);
         cursorSprite.scaleType('deform');
 
+        var bulletImages = [];
+        bulletImages.push(assets.get('cursor'));
+        bulletSprite = new Sprite(cursorImages, 10, 10);
+        bulletSprite.scaleType('deform');
+
         assetsLoaded = true;
     });
 
 
     //Setting up socket IO
-    //var socket = io.connect('http://109.217.85.232:1337');
-    socket = io.connect('http://127.0.0.1:1337');
-
+    //socket = io.connect('http://90.48.213.48:1337');
+    //socket = io.connect('http://127.0.0.1:1337');
+    socket = io.connect();
     socket.on('chat_message', function(data) {
         var divTag = document.createElement("div");
         divTag.innerHTML = data;
@@ -129,6 +135,11 @@
             data.players.forEach(function(element, index, array) {
                 playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                 playerSprite.draw(ctx, data.elapsedTime);
+            });
+
+            data.projectiles.forEach(function(element, index, array) {
+                bulletSprite.move(element.body.x+offsetX, element.body.y+offsetY);
+                bulletSprite.draw(ctx, data.elapsedTime);
             });
 
             platforms.forEach(function(element, index, array) {
