@@ -3,7 +3,7 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
   , logger = require('logger')
-  , game = require('game')
+  , game = require('game/game')
   , curPlayerIndex = 0;
 
 io.set('log level', 1);
@@ -55,11 +55,19 @@ io.sockets.on('connection', function (socket) {
         game.removePlayer(id);
     });
 
-    //Manage inputs
-    socket.on('input', function(data) {
+    //Manage keyboard inputs
+    socket.on('input_keyboard', function(data) {
       var type = data.type; //up or down
-      var key = data.key; //up, down, left or right
-      game.manageInput(type, key, player);
+      var action = data.action; //up, down, left or right
+      game.manageKeyboardInput(type, action, player);
+    });
+
+    //Manage mouse inputs
+    socket.on('input_mouse', function(data) {
+        var type = data.type; //up or down
+        var x = data.x; //click x
+        var y = data.y; //click y
+        game.manageMouseInput(type, x, y, player);
     });
 
     //Manage chat

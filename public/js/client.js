@@ -44,6 +44,16 @@
         }
     });
 
+    canvas.addEventListener('mousedown', function(event) {
+        if(socket && cursorSprite) {
+            var offsetX = canvas.width/2 - 16 - me.body.x;
+            var offsetY = canvas.height/2 - 16 - me.body.y;
+            var x = cursorX-offsetX+cursorSprite.rect.width/2;
+            var y = cursorY-offsetY+cursorSprite.rect.height/2;
+            socket.emit('input_mouse', {type:'down', x:x, y:y});
+        }
+    });
+
     //Loading assets
     assets.add("player","http://cdn.deguisetoi.fr/images/rep_articles/mini/ba/banane-a-etirer_213079_1.jpg");
     assets.add("cursor","/images/cursor.jpg");
@@ -83,7 +93,7 @@
 
     //Setting up socket IO
     //var socket = io.connect('http://109.217.85.232:1337');
-    socket = io.connect('http://192.168.1.12:1337');
+    socket = io.connect('http://127.0.0.1:1337');
 
     socket.on('chat_message', function(data) {
         var divTag = document.createElement("div");
@@ -113,8 +123,8 @@
                 }
             });
 
-            var offsetX = canvas.width/2 - 16 -me.body.x;
-            var offsetY = canvas.height/2 - 16 -me.body.y;
+            var offsetX = canvas.width/2 - 16 - me.body.x;
+            var offsetY = canvas.height/2 - 16 - me.body.y;
 
             data.players.forEach(function(element, index, array) {
                 playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
@@ -171,7 +181,7 @@
                 keyStr = 'right';
                 break;
         }
-        socket.emit('input', {type:type, key:keyStr});
+        socket.emit('input_keyboard', {type:type, action:keyStr});
     };
 
     function getWindowSize() {
