@@ -4,7 +4,8 @@ var express = require('express')
   , io = require('socket.io').listen(server)
   , logger = require('logger')
   , game = require('game/game')
-  , curPlayerIndex = 0;
+  , curPlayerIndex = 0
+  , input = require('input');
 
 io.set('log level', 1);
 
@@ -23,6 +24,11 @@ app.configure(function(){
 server.listen(1337);
 
 logger.log('Server listening on port 1337', logger.cyan);
+
+//Listening for input
+process.stdin.on('data', function (data) {
+    input.handle(data.toString().trim(), game);
+});
 
 //Setting up game
 var gameLoopCallback = function(players, projectiles, elapsedTime) {

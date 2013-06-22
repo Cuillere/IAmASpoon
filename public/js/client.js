@@ -138,13 +138,13 @@
             });
 
             data.projectiles.forEach(function(element, index, array) {
-                bulletSprite.move(element.body.x+offsetX, element.body.y+offsetY);
+                bulletSprite.move(element.x+offsetX, element.y+offsetY);
                 bulletSprite.draw(ctx, data.elapsedTime);
             });
 
             platforms.forEach(function(element, index, array) {
                 ctx.fillStyle = "rgb(60,200,60)";
-                ctx.fillRect(element.body.x+offsetX, element.body.y+offsetY, element.body.width, element.body.height);
+                ctx.fillRect(element.x+offsetX, element.y+offsetY, element.width, element.height);
             });
 
             cursorSprite.move(cursorX, cursorY);
