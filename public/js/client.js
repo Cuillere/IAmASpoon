@@ -124,6 +124,15 @@
         id = data;
     });
 
+    socket.on('pause', function(data) {
+        ctx.font="30px Arial";
+        ctx.fillText("Game paused",10,50);
+    });
+
+    socket.on('resume', function(data) {
+
+    });
+
     socket.on('update', function(data) {
         if(assetsLoaded) {
             ctx.fillStyle = "rgb(50,90,155)";

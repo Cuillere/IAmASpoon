@@ -27,7 +27,7 @@ logger.log('Server listening on port 1337', logger.cyan);
 
 //Listening for input
 process.stdin.on('data', function (data) {
-    input.handle(data.toString().trim(), game);
+    input.handle(data.toString().trim(), game, io.sockets);
 });
 
 //Setting up game
