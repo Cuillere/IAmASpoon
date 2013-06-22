@@ -37,12 +37,20 @@
     canvas.width = size.w*2/3;
     canvas.height = size.h*4/5;
 
+    window.onresize = function(event) {
+        size = getWindowSize();
+        canvas.width = size.w*2/3;
+        canvas.height = size.h*4/5;
+    };
+
+
     canvas.addEventListener('mousemove', function(event) {
         if(assetsLoaded) {
             event.preventDefault();
             cursorX = event.clientX - this.offsetLeft - cursorSprite.rect.width/2;
             cursorY = event.clientY - this.offsetTop - cursorSprite.rect.height/2;
         }
+        return false;
     });
 
     canvas.addEventListener('mousedown', function(event) {
