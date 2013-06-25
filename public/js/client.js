@@ -1,7 +1,10 @@
-(function(){
+function setupGame() {
     "use strict"
 
     //VARS
+    //--->Log
+    var name_input = document.getElementById('log-name');
+    var team_input = document.getElementById('team-hidden');
     //--->Chat
     var chat_box = document.getElementById("chat-box");
     var chat_msg = document.getElementById("chat-message");
@@ -22,16 +25,18 @@
     //--->Game data
     var platforms;
     var id;
+    var name =  name_input.value;
     var me;   //me.body me.id
 
     //Setting up chat
-    chat_send.addEventListener('click', function() {
+    var sendMessage = function() {
         if(socket) {
             var msg = chat_msg.value;
             socket.emit('chat_message', msg);
             chat_msg.value = '';
         }
-    });
+    };
+    chat_send.addEventListener('click', sendMessage);
 
     //Setting up canvas
     canvas.width = size.w*2/3;
@@ -64,7 +69,7 @@
     });
 
     //Loading assets
-    assets.add("player","http://cdn.deguisetoi.fr/images/rep_articles/mini/ba/banane-a-etirer_213079_1.jpg");
+    assets.add("player","http://25.media.tumblr.com/787cc8e4400280fcd50293401c88eb1d/tumblr_mj1a6xPvAi1rfjgt8o1_500.jpg");
     assets.add("cursor","/images/cursor.jpg");
     assets.load(function(progress, max){
         //background
@@ -122,6 +127,7 @@
 
     socket.on('init_id', function(data) {
         id = data;
+        socket.emit('player_name', {id:id, name:name_input.value, team:team_input.value});
     });
 
     socket.on('pause', function(data) {
@@ -150,12 +156,21 @@
             var offsetY = canvas.height/2 - 16 - me.body.y;
 
             data.players.forEach(function(element, index, array) {
+                //Draw sprite
                 playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                 playerSprite.draw(ctx, data.elapsedTime);
+
+                //Draw health
+                ctx.fillStyle = "rgb(255,90,90)";
+                ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
+
+                //Draw nickname
+                ctx.font="12px Arial";
+                ctx.fillText(element.name,element.body.x +offsetX,element.body.y-17+offsetY);
             });
 
             data.projectiles.forEach(function(element, index, array) {
-                bulletSprite.move(element.x+offsetX, element.y+offsetY);
+                bulletSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                 bulletSprite.draw(ctx, data.elapsedTime);
             });
 
@@ -208,6 +223,9 @@
             case KEY_RIGHT:
                 keyStr = 'right';
                 break;
+            case KEY_ENTER:
+                sendMessage();
+                break;
         }
         socket.emit('input_keyboard', {type:type, action:keyStr});
     };
@@ -230,4 +248,4 @@
         return {w:myWidth, h:myHeight};
     }
 
-})();
+};

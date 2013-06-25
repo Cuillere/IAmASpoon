@@ -55,6 +55,13 @@ io.sockets.on('connection', function (socket) {
     //Give the player his id
     socket.emit('init_id', id);
 
+    //Manage player nickname
+    socket.on('player_name', function (data) {
+        var player = game.getPlayer(data.id);
+        player.name = data.name;
+        player.team = data.team;
+    });
+
     //Manage player disconnect
     socket.on('disconnect', function () {
         logger.log('Disconnection : '+id, logger.cyan);
