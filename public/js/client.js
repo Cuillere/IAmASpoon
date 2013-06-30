@@ -19,6 +19,7 @@ function setupGame() {
     var cursorSprite;
     var playerSprite;
     var bulletSprite;
+    var flagSprite;
     var assetsLoaded = false;
     //--->Socket IO
     var socket;
@@ -106,6 +107,11 @@ function setupGame() {
         bulletSprite = new Sprite(cursorImages, 10, 10);
         bulletSprite.scaleType('deform');
 
+        var flagImages = [];
+        flagImages.push(assets.get('cursor'));
+        flagSprite = new Sprite(flagImages, 32, 64);
+        flagSprite.scaleType('deform');
+
         assetsLoaded = true;
     });
 
@@ -161,17 +167,27 @@ function setupGame() {
                 playerSprite.draw(ctx, data.elapsedTime);
 
                 //Draw health
-                ctx.fillStyle = "rgb(255,90,90)";
-                ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
+                //ctx.fillStyle = "rgb(255,90,90)";
+                //ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
 
                 //Draw nickname
                 ctx.font="12px Arial";
+                if(element.team == 'blue') {
+                    ctx.fillStyle = "rgb(60,60,255)";
+                } else {
+                    ctx.fillStyle = "rgb(255,60,60)";
+                }
                 ctx.fillText(element.name,element.body.x +offsetX,element.body.y-17+offsetY);
             });
 
             data.projectiles.forEach(function(element, index, array) {
                 bulletSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                 bulletSprite.draw(ctx, data.elapsedTime);
+            });
+
+            data.flags.forEach(function(element, index, array) {
+                flagSprite.move(element.body.x+offsetX, element.body.y+offsetY);
+                flagSprite.draw(ctx, data.elapsedTime);
             });
 
             platforms.forEach(function(element, index, array) {

@@ -85,21 +85,21 @@ function Assets(){
 }
 
 Assets.prototype = {
-	load: function(loading, load) {
+	load: function(callbackLoading, callbackLoad) {
 		var count = this.toLoad.length;
 		var remaining = count;
 		var self = this;
 
-		loading(0, count);
+        callbackLoading(0, count);
 		self.toLoad.forEach(function(element, index, array){
 			var image = new Image();
 			image.src = element.src;
 			image.onload = function() {
 				self.allImages[element.name] = image;
-				loading(count-remaining+1, array.length);
+                callbackLoading(count-remaining+1, array.length);
 				remaining--;
 				if(remaining == 0){
-					load();
+                    callbackLoad();
 					self.toLoad = [];
 				}
 			}

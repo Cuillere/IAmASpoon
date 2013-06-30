@@ -31,8 +31,8 @@ process.stdin.on('data', function (data) {
 });
 
 //Setting up game
-var gameLoopCallback = function(players, projectiles, elapsedTime) {
-  io.sockets.emit('update', {players:players, projectiles:projectiles, elapsedTime:elapsedTime});
+var gameLoopCallback = function(players, projectiles, flags, elapsedTime) {
+  io.sockets.emit('update', {players:players, projectiles:projectiles,flags:flags, elapsedTime:elapsedTime});
 };
 
 game.addPlatform('top_floor', 0, 0, 1000, 32);
@@ -40,6 +40,12 @@ game.addPlatform('right_floor', 968, 0, 32, 600);
 game.addPlatform('bottom_floor', 0, 600, 1000, 32);
 game.addPlatform('left_floor', 0, 0, 32, 600);
 game.addPlatform('middle_floor', 0, 135, 64, 32);
+
+game.setSpawn({team:'blue', x:60, y:60});
+game.setSpawn({team:'red', x:900, y:60});
+
+game.addFlag('red', 900, 300);
+game.addFlag('blue', 60, 300);
 
 game.start(gameLoopCallback);
 
@@ -60,6 +66,7 @@ io.sockets.on('connection', function (socket) {
         var player = game.getPlayer(data.id);
         player.name = data.name;
         player.team = data.team;
+        game.spawnPlayer(player);
     });
 
     //Manage player disconnect
