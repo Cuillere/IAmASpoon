@@ -28,6 +28,8 @@ function setupGame() {
     var id;
     var name =  name_input.value;
     var me;   //me.body me.id
+    var pingDate;
+    var pingTime = 0;
 
     //Setting up chat
     var sendMessage = function() {
@@ -53,21 +55,40 @@ function setupGame() {
     canvas.addEventListener('mousemove', function(event) {
         if(assetsLoaded) {
             event.preventDefault();
-            cursorX = event.clientX - this.offsetLeft - cursorSprite.rect.width/2;
-            cursorY = event.clientY - this.offsetTop - cursorSprite.rect.height/2;
+            cursorX = event.clientX - cursorSprite.rect.width/2 - canvas.offsetLeft;
+            cursorY = event.clientY - cursorSprite.rect.height/2 - canvas.offsetTop;
+
+            var offsetX = canvas.width/2 - 16 - me.body.x;
+            var offsetY = canvas.height/2 - 16 - me.body.y;
+            var x = cursorX-offsetX+cursorSprite.rect.width/2;
+            var y = cursorY-offsetY+cursorSprite.rect.height/2;
+
+            var cursorXMeRelative = x - me.body.x - me.body.width/2;
+            var cursorYMeRelative = y - me.body.y - me.body.height/2;
+            socket.emit('input_mouse', {type:'move', x:cursorXMeRelative, y:cursorYMeRelative});
         }
         return false;
     });
 
     canvas.addEventListener('mousedown', function(event) {
         if(socket && cursorSprite) {
-            var offsetX = canvas.width/2 - 16 - me.body.x;
-            var offsetY = canvas.height/2 - 16 - me.body.y;
-            var x = cursorX-offsetX+cursorSprite.rect.width/2;
-            var y = cursorY-offsetY+cursorSprite.rect.height/2;
-            socket.emit('input_mouse', {type:'down', x:x, y:y});
+            socket.emit('input_mouse', {type:'down', x:cursorX, y:cursorY});
         }
     });
+
+    canvas.addEventListener('mouseup', function(event) {
+        if(socket && cursorSprite) {
+            socket.emit('input_mouse', {type:'up', x:cursorX, y:cursorY});
+        }
+    });
+
+    function getCursorCoordinates() {
+        var offsetX = canvas.width/2 - 16 - me.body.x;
+        var offsetY = canvas.height/2 - 16 - me.body.y;
+        var x = cursorX-offsetX+cursorSprite.rect.width/2;
+        var y = cursorY-offsetY+cursorSprite.rect.height/2;
+        return {x:x, y:y};
+    }
 
     //Loading assets
     assets.add("player","http://25.media.tumblr.com/787cc8e4400280fcd50293401c88eb1d/tumblr_mj1a6xPvAi1rfjgt8o1_500.jpg");
@@ -120,6 +141,11 @@ function setupGame() {
     //socket = io.connect('http://90.48.213.48:1337');
     //socket = io.connect('http://127.0.0.1:1337');
     socket = io.connect();
+    ping();
+    socket.on('pong', function(data) {
+        pingTime = Date.now() - pingDate;
+    });
+
     socket.on('chat_message', function(data) {
         var divTag = document.createElement("div");
         divTag.innerHTML = data;
@@ -167,8 +193,8 @@ function setupGame() {
                 playerSprite.draw(ctx, data.elapsedTime);
 
                 //Draw health
-                //ctx.fillStyle = "rgb(255,90,90)";
-                //ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
+                ctx.fillStyle = "rgb(255,90,90)";
+                ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
 
                 //Draw nickname
                 ctx.font="12px Arial";
@@ -198,6 +224,10 @@ function setupGame() {
             cursorSprite.move(cursorX, cursorY);
             cursorSprite.draw(ctx, data.elapsedTime);
 
+            //Draw ping
+            ctx.font="12px Arial";
+            ctx.fillStyle = "rgb(60,255,65)";
+            ctx.fillText(pingTime, 10, 10);
         }
     });
 
@@ -219,6 +249,15 @@ function setupGame() {
             manageKeyboardInput('up', intKeyCode, socket);
         }
     };
+
+    function ping() {
+        if(socket) {
+            console.log('PING');
+            socket.emit('ping', '');
+            pingDate = Date.now();
+        }
+        setTimeout(ping, 1000);
+    }
 
     function manageKeyboardInput(type, intKeyCode, socket) {
         var keyStr = '';

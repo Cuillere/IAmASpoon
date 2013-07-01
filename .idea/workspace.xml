@@ -2,29 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="944b02e0-7fa0-4c99-bdf1-1c4018da451b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/physics/body.js" afterPath="$PROJECT_DIR$/node_modules/physics/body.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/client.js" afterPath="$PROJECT_DIR$/public/js/client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/game/game.js" afterPath="$PROJECT_DIR$/node_modules/game/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/graphics.js" afterPath="$PROJECT_DIR$/public/js/graphics.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/physics/physicSpace.js" afterPath="$PROJECT_DIR$/node_modules/physics/physicSpace.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/game/player.js" afterPath="$PROJECT_DIR$/node_modules/game/player.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/game/projectile.js" afterPath="$PROJECT_DIR$/node_modules/game/projectile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/game/weapon.js" afterPath="$PROJECT_DIR$/node_modules/game/weapon.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Iaas.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372620398879" ignored="false" />
-    <file path="/server.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372621751982" ignored="false" />
+    <file path="/Dummy.txt" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372702717273" ignored="false" />
+    <file path="/server.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372697884439" ignored="false" />
     <file path="/index.html" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372190856250" ignored="false" />
     <file path="/style.css" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372190200489" ignored="false" />
-    <file path="/client.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372621603759" ignored="false" />
-    <file path="/game.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372623818530" ignored="false" />
+    <file path="/client.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372710505836" ignored="false" />
+    <file path="/game.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372710656514" ignored="false" />
     <file path="/input.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371915977918" ignored="false" />
-    <file path="/player.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372623792975" ignored="false" />
-    <file path="/body.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372623859739" ignored="false" />
+    <file path="/player.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372710770083" ignored="false" />
+    <file path="/body.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372699005047" ignored="false" />
     <file path="/force.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371746086119" ignored="false" />
     <file path="/physicSpace.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372622325375" ignored="false" />
-    <file path="/weapon.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372192354812" ignored="false" />
+    <file path="/weapon.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372710743297" ignored="false" />
     <file path="/a.dummy" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1371915939032" ignored="false" />
     <file path="/login.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372190936023" ignored="false" />
     <file path="/projectile.js" changelist="944b02e0-7fa0-4c99-bdf1-1c4018da451b" time="1372192262581" ignored="false" />
@@ -52,43 +51,7 @@
       <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="23" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/node_modules/game/game.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="36" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.3008658">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="physicSpace.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/physics/physicSpace.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="81" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="body.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/physics/body.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="53" selection-start="3761" selection-end="3761" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flag.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/game/ctf/flag.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="26" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0">
+            <state line="92" column="49" selection-start="2893" selection-end="2893" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -97,7 +60,34 @@
       <file leaf-file-name="player.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/game/player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="36" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0">
+            <state line="20" column="81" selection-start="597" selection-end="597" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="66" column="68" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/game/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="207" column="31" selection-start="5305" selection-end="5305" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="weapon.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/node_modules/game/weapon.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="26" selection-start="891" selection-end="891" vertical-scroll-proportion="0.75359344">
               <folding />
             </state>
           </provider>
@@ -127,16 +117,16 @@
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/views/index.html" />
         <option value="$PROJECT_DIR$/public/js/login.js" />
-        <option value="$PROJECT_DIR$/node_modules/game/projectile.js" />
-        <option value="$PROJECT_DIR$/node_modules/game/weapon.js" />
         <option value="$PROJECT_DIR$/public/js/graphics.js" />
-        <option value="$PROJECT_DIR$/public/js/client.js" />
         <option value="$PROJECT_DIR$/node_modules/physics/physicSpace.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/node_modules/game/ctf/flag.js" />
-        <option value="$PROJECT_DIR$/node_modules/game/player.js" />
+        <option value="$PROJECT_DIR$/node_modules/game/projectile.js" />
         <option value="$PROJECT_DIR$/node_modules/physics/body.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/public/js/client.js" />
         <option value="$PROJECT_DIR$/node_modules/game/game.js" />
+        <option value="$PROJECT_DIR$/node_modules/game/player.js" />
+        <option value="$PROJECT_DIR$/node_modules/game/weapon.js" />
       </list>
     </option>
   </component>
@@ -171,7 +161,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -272,37 +261,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Iaas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Iaas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ctf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -503,13 +471,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/game/weapon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="79" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="44" selection-start="327" selection-end="338" vertical-scroll-proportion="0.24232633">
@@ -524,23 +485,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/game/projectile.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/physics/physicSpace.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="26" selection-start="6196" selection-end="6196" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="23" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.0">
+        <state line="28" column="81" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -552,30 +499,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/game/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="36" selection-start="728" selection-end="728" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/physics/physicSpace.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="81" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/physics/body.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="53" selection-start="3761" selection-end="3761" vertical-scroll-proportion="0.0">
+        <state line="97" column="76" selection-start="4434" selection-end="4434" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/game/projectile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="49" selection-start="2893" selection-end="2893" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="68" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/game/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="81" selection-start="597" selection-end="597" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/game/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="36" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.3008658">
+        <state line="207" column="31" selection-start="5305" selection-end="5305" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/game/weapon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="26" selection-start="891" selection-end="891" vertical-scroll-proportion="0.75359344">
           <folding />
         </state>
       </provider>

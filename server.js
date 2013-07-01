@@ -69,6 +69,10 @@ io.sockets.on('connection', function (socket) {
         game.spawnPlayer(player);
     });
 
+    socket.on('ping', function(data) {
+        socket.emit('pong', data);
+    });
+
     //Manage player disconnect
     socket.on('disconnect', function () {
         logger.log('Disconnection : '+id, logger.cyan);
@@ -84,9 +88,9 @@ io.sockets.on('connection', function (socket) {
 
     //Manage mouse inputs
     socket.on('input_mouse', function(data) {
-        var type = data.type; //up or down
-        var x = data.x; //click x
-        var y = data.y; //click y
+        var type = data.type; //up, down or move
+        var x = data.x; //click x player relative
+        var y = data.y; //click y player relative
         game.manageMouseInput(type, x, y, player);
     });
 
