@@ -30,6 +30,8 @@ function setupGame() {
     var me;   //me.body me.id
     var pingDate;
     var pingTime = 0;
+    //---> DEBUG
+    var debug = true;
 
     //Setting up chat
     var sendMessage = function() {
@@ -91,11 +93,11 @@ function setupGame() {
     }
 
     //Loading assets
-    assets.add("player","/images/test.jpg");
+    assets.add("player","/images/perso.png");
     assets.add("cursor","/images/cursor.jpg");
     assets.load(function(progress, max){
         //background
-        ctx.fillStyle = "#333";
+        ctx.fillStyle = "#ccc";
         ctx.fillRect(0,0,canvas.width,canvas.height);
 
         var px = 10;
@@ -117,21 +119,25 @@ function setupGame() {
         playerImages.push(assets.get('player'));
         playerSprite = new Sprite(playerImages,50,80);
         playerSprite.scaleType('deform');
+        playerSprite.enableDebug(debug);
 
         var cursorImages = [];
         cursorImages.push(assets.get('cursor'));
         cursorSprite = new Sprite(cursorImages, 10, 10);
         cursorSprite.scaleType('deform');
+        cursorSprite.enableDebug(debug);
 
         var bulletImages = [];
         bulletImages.push(assets.get('cursor'));
         bulletSprite = new Sprite(cursorImages, 10, 10);
         bulletSprite.scaleType('deform');
+        bulletSprite.enableDebug(debug);
 
         var flagImages = [];
         flagImages.push(assets.get('cursor'));
         flagSprite = new Sprite(flagImages, 32, 64);
         flagSprite.scaleType('deform');
+        flagSprite.enableDebug(debug);
 
         assetsLoaded = true;
     });
@@ -173,7 +179,7 @@ function setupGame() {
 
     socket.on('update', function(data) {
         if(assetsLoaded) {
-            ctx.fillStyle = "rgb(50,90,155)";
+            ctx.fillStyle = "#66CCFF";
             ctx.fillRect(0,0,canvas.width,canvas.height);
 
             //Find me

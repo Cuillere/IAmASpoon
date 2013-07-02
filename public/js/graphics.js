@@ -59,6 +59,7 @@ Sprite.prototype = {
 		}
 		if(this.debug) {
 			ctx.strokeStyle="rgb(255,0,0)";
+            ctx.lineWidth = 1;
 			ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
 		}
 	},
