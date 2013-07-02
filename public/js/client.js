@@ -91,7 +91,7 @@ function setupGame() {
     }
 
     //Loading assets
-    assets.add("player","http://25.media.tumblr.com/787cc8e4400280fcd50293401c88eb1d/tumblr_mj1a6xPvAi1rfjgt8o1_500.jpg");
+    assets.add("player","/images/test.jpg");
     assets.add("cursor","/images/cursor.jpg");
     assets.load(function(progress, max){
         //background
@@ -115,7 +115,7 @@ function setupGame() {
         //Setting up sprites
         var playerImages = [];
         playerImages.push(assets.get('player'));
-        playerSprite = new Sprite(playerImages,32,32);
+        playerSprite = new Sprite(playerImages,50,80);
         playerSprite.scaleType('deform');
 
         var cursorImages = [];

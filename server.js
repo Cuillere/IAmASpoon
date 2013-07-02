@@ -76,6 +76,10 @@ io.sockets.on('connection', function (socket) {
     //Manage player disconnect
     socket.on('disconnect', function () {
         logger.log('Disconnection : '+id, logger.cyan);
+        var player = game.getPlayer(id);
+        if(player.flag) {
+            player.dropFlag();
+        }
         game.removePlayer(id);
     });
 
