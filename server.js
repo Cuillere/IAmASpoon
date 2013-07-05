@@ -26,9 +26,9 @@ app.configure(function(){
     app.use('/css', express.static(__dirname + '/public/css'));
 });
 
-server.listen(settings.port);
+server.listen(settings.server.port);
 
-logger.log('Server listening on port ' + settings.port, logger.cyan);
+logger.log('Server listening on port ' + settings.server.port, logger.cyan);
 
 //Listening for input
 process.stdin.on('data', function (data) {
@@ -39,7 +39,7 @@ process.stdin.on('data', function (data) {
 var gameLoopCallback = function(players, projectiles, flags, elapsedTime) {
   io.sockets.emit('update', {players:players, projectiles:projectiles,flags:flags, elapsedTime:elapsedTime});
 };
-
+game.settings = settings.game;
 game.addPlatform('top_floor', 0, 0, 1000, 32);
 game.addPlatform('right_floor', 968, 0, 32, 600);
 game.addPlatform('bottom_floor', 0, 600, 1000, 32);
