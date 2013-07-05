@@ -5,9 +5,14 @@ var express = require('express')
   , logger = require('logger')
   , game = require('game/game')
   , curPlayerIndex = 0
-  , input = require('input');
+  , input = require('input')
+  , fs = require('fs');
 
 io.set('log level', 1);
+
+
+//Setting up conf file
+var settings = JSON.parse(fs.readFileSync('./server.conf', 'utf-8'));
 
 //Setting up server
 app.get('/', function (req, res) {
@@ -21,9 +26,9 @@ app.configure(function(){
     app.use('/css', express.static(__dirname + '/public/css'));
 });
 
-server.listen(1337);
+server.listen(settings.port);
 
-logger.log('Server listening on port 1337', logger.cyan);
+logger.log('Server listening on port ' + settings.port, logger.cyan);
 
 //Listening for input
 process.stdin.on('data', function (data) {
@@ -54,7 +59,7 @@ io.sockets.on('connection', function (socket) {
     var address = socket.handshake.address;
     var id = address.address + ':' + address.port + '/' + curPlayerIndex++;
     logger.log('Connection : ' + id, logger.cyan);
-    var player = game.addPlayer(id);
+    var player = null;
 
     //Give the platforms
     socket.emit('init_platforms', game.platforms);
@@ -63,10 +68,10 @@ io.sockets.on('connection', function (socket) {
 
     //Manage player nickname
     socket.on('player_name', function (data) {
-        var player = game.getPlayer(data.id);
+        player = game.addPlayer(data.id);
         player.name = data.name;
         player.team = data.team;
-        game.spawnPlayer(player);
+        player.respawn(game);
     });
 
     socket.on('ping', function(data) {
@@ -76,26 +81,31 @@ io.sockets.on('connection', function (socket) {
     //Manage player disconnect
     socket.on('disconnect', function () {
         logger.log('Disconnection : '+id, logger.cyan);
-        var player = game.getPlayer(id);
-        if(player.flag) {
-            player.dropFlag();
+        if(player) {
+            if(player.flag) {
+                player.dropFlag();
+            }
+            game.removePlayer(id);
         }
-        game.removePlayer(id);
     });
 
     //Manage keyboard inputs
     socket.on('input_keyboard', function(data) {
-      var type = data.type; //up or down
-      var action = data.action; //up, down, left or right
-      game.manageKeyboardInput(type, action, player);
+        if(player) {
+          var type = data.type; //up or down
+          var action = data.action; //up, down, left or right
+          game.manageKeyboardInput(type, action, player);
+        }
     });
 
     //Manage mouse inputs
     socket.on('input_mouse', function(data) {
-        var type = data.type; //up, down or move
-        var x = data.x; //click x player relative
-        var y = data.y; //click y player relative
-        game.manageMouseInput(type, x, y, player);
+        if(player) {
+            var type = data.type; //up, down or move
+            var x = data.x; //click x player relative
+            var y = data.y; //click y player relative
+            game.manageMouseInput(type, x, y, player);
+        }
     });
 
     //Manage chat

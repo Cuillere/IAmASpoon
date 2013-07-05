@@ -182,7 +182,6 @@ function setupGame() {
             ctx.fillStyle = "#66CCFF";
             ctx.fillRect(0,0,canvas.width,canvas.height);
 
-            //Find me
             data.players.forEach(function(element, index, array) {
                 if(element.id == id) {
                     //This is me !
@@ -194,22 +193,28 @@ function setupGame() {
             var offsetY = canvas.height/2 - 16 - me.body.y;
 
             data.players.forEach(function(element, index, array) {
-                //Draw sprite
-                playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
-                playerSprite.draw(ctx, data.elapsedTime);
-
-                //Draw health
-                ctx.fillStyle = "rgb(255,90,90)";
-                ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
-
-                //Draw nickname
-                ctx.font="12px Arial";
-                if(element.team == 'blue') {
-                    ctx.fillStyle = "rgb(60,60,255)";
-                } else {
-                    ctx.fillStyle = "rgb(255,60,60)";
+                if(element.id == id) {
+                    //This is me !
+                    me = element;
                 }
-                ctx.fillText(element.name,element.body.x +offsetX,element.body.y-17+offsetY);
+                if(!element.isDead) {
+                    //Draw sprite
+                    playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
+                    playerSprite.draw(ctx, data.elapsedTime);
+
+                    //Draw health
+                    ctx.fillStyle = "rgb(255,90,90)";
+                    ctx.fillRect(element.body.x +offsetX,element.body.y-5+offsetY,element.body.width*element.health/element.max_health,3);
+
+                    //Draw nickname
+                    ctx.font="12px Arial";
+                    if(element.team == 'blue') {
+                        ctx.fillStyle = "rgb(60,60,255)";
+                    } else {
+                        ctx.fillStyle = "rgb(255,60,60)";
+                    }
+                    ctx.fillText(element.name,element.body.x +offsetX,element.body.y-17+offsetY);
+                }
             });
 
             data.projectiles.forEach(function(element, index, array) {
@@ -229,6 +234,15 @@ function setupGame() {
 
             cursorSprite.move(cursorX, cursorY);
             cursorSprite.draw(ctx, data.elapsedTime);
+
+            if(me.isDead) {
+                ctx.fillStyle = "rgba(20,20,20,0.5)";
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+                ctx.font="30px Arial";
+                ctx.fillStyle = "rgb(200,60,65)";
+                ctx.fillText('You went dead, never go dead', canvas.width/2-50, canvas.height/2);
+                ctx.fillText((((me.respawnDelay - me.m_currentRespawnDelay)/1000)|0), canvas.width/2-50, canvas.height/2 + 60);
+            }
 
             //Draw ping
             ctx.font="12px Arial";
