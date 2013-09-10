@@ -119,25 +119,25 @@ function setupGame() {
         playerImages.push(assets.get('player'));
         playerSprite = new Sprite(playerImages,50,80);
         playerSprite.scaleType('deform');
-        playerSprite.enableDebug(debug);
+        //playerSprite.enableDebug(debug);
 
         var cursorImages = [];
         cursorImages.push(assets.get('cursor'));
         cursorSprite = new Sprite(cursorImages, 10, 10);
         cursorSprite.scaleType('deform');
-        cursorSprite.enableDebug(debug);
+        //cursorSprite.enableDebug(debug);
 
         var bulletImages = [];
         bulletImages.push(assets.get('cursor'));
         bulletSprite = new Sprite(cursorImages, 10, 10);
         bulletSprite.scaleType('deform');
-        bulletSprite.enableDebug(debug);
+        //bulletSprite.enableDebug(debug);
 
         var flagImages = [];
         flagImages.push(assets.get('cursor'));
         flagSprite = new Sprite(flagImages, 32, 64);
         flagSprite.scaleType('deform');
-        flagSprite.enableDebug(debug);
+        //flagSprite.enableDebug(debug);
 
         assetsLoaded = true;
     });
