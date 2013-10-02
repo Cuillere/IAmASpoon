@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link type="text/css" href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <div id="log-div">
+        <input type='text' id='log-name' />
+        <input type='button' value='Blue' id='team-blue-button'/>
+        <input type='button' value='Red' id='team-red-button'/>
+        <input type='hidden' id='team-hidden'/>
+    </div>
+
+    <div id="game-div">
+        <canvas id='draw-space'></canvas>
+        <div id='chat-container'>
+            <div id='chat-box'>
+            </div>
+            <input type='text' id='chat-message'/>
+            <input type='button' value='send' id='chat-send'/>
+        </div>
+    </div>
+</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/js/graphics.js"></script>
+<script type="text/javascript" src="/js/keyboard.js"></script>
+<script type="text/javascript" src="/js/client.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>

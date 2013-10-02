@@ -1,5 +1,5 @@
 function setupGame() {
-    "use strict"
+    "use strict";
 
     //VARS
     //--->Log
@@ -17,9 +17,11 @@ function setupGame() {
     var cursorX = 0, cursorY = 0;
     //--->Graphics--->Sprites
     var cursorSprite;
-    var playerSprite;
+    var bluePlayerSprite;
+    var redPlayerSprite;
     var bulletSprite;
-    var flagSprite;
+    var redFlagSprite;
+    var blueFlagSprite;
     var assetsLoaded = false;
     //--->Socket IO
     var socket;
@@ -93,7 +95,10 @@ function setupGame() {
     }
 
     //Loading assets
-    assets.add("player","/images/perso.png");
+    assets.add("blue_player","/images/blue_player.png");
+    assets.add("red_player","/images/red_player.png");
+    assets.add("blue_flag","/images/blue_flag.png");
+    assets.add("red_flag","/images/red_flag.png");
     assets.add("cursor","/images/cursor.jpg");
     assets.load(function(progress, max){
         //background
@@ -115,29 +120,35 @@ function setupGame() {
         ctx.strokeRect(px,py,w,h);
     }, function(){
         //Setting up sprites
-        var playerImages = [];
-        playerImages.push(assets.get('player'));
-        playerSprite = new Sprite(playerImages,50,80);
-        playerSprite.scaleType('deform');
-        //playerSprite.enableDebug(debug);
+        var bluePlayerImages = [];
+        bluePlayerImages.push(assets.get('blue_player'));
+        bluePlayerSprite = new Sprite(bluePlayerImages,50,80);
+        bluePlayerSprite.scaleType('deform');
+
+        var redPlayerImages = [];
+        redPlayerImages.push(assets.get('red_player'));
+        redPlayerSprite = new Sprite(redPlayerImages,50,80);
+        redPlayerSprite.scaleType('deform');
 
         var cursorImages = [];
         cursorImages.push(assets.get('cursor'));
         cursorSprite = new Sprite(cursorImages, 10, 10);
         cursorSprite.scaleType('deform');
-        //cursorSprite.enableDebug(debug);
 
         var bulletImages = [];
         bulletImages.push(assets.get('cursor'));
         bulletSprite = new Sprite(cursorImages, 10, 10);
         bulletSprite.scaleType('deform');
-        //bulletSprite.enableDebug(debug);
 
-        var flagImages = [];
-        flagImages.push(assets.get('cursor'));
-        flagSprite = new Sprite(flagImages, 32, 64);
-        flagSprite.scaleType('deform');
-        //flagSprite.enableDebug(debug);
+        var blueFlagImages = [];
+        blueFlagImages.push(assets.get('blue_flag'));
+        blueFlagSprite = new Sprite(blueFlagImages, 50, 160);
+        blueFlagSprite.scaleType('deform');
+
+        var redFlagImages = [];
+        redFlagImages.push(assets.get('red_flag'));
+        redFlagSprite = new Sprite(redFlagImages, 50, 160);
+        redFlagSprite.scaleType('deform');
 
         assetsLoaded = true;
     });
@@ -199,6 +210,12 @@ function setupGame() {
                 }
                 if(!element.isDead) {
                     //Draw sprite
+                    var playerSprite;
+                    if(element.team == 'blue'){
+                        playerSprite = bluePlayerSprite;
+                    } else {
+                        playerSprite = redPlayerSprite;
+                    }
                     playerSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                     playerSprite.draw(ctx, data.elapsedTime);
 
@@ -223,6 +240,12 @@ function setupGame() {
             });
 
             data.flags.forEach(function(element, index, array) {
+                var flagSprite;
+                if(element.team == 'blue') {
+                    flagSprite = blueFlagSprite;
+                } else {
+                    flagSprite = redFlagSprite;
+                }
                 flagSprite.move(element.body.x+offsetX, element.body.y+offsetY);
                 flagSprite.draw(ctx, data.elapsedTime);
             });
